@@ -2,15 +2,30 @@ import os
 
 import openpyxl as op
 
-SESSION_NAME = 'Technical Day TWO: Engineering and IT - Wednesday, Sep 15, 9:00 am - 2:00 pm EDT'
+SESSION_NAME = 'Technical Day TWO: Engineering and IT - Wednesday, Sep 15, 9:00 am - 2:00 pm EDT' #CHANGE THIS LINE!
 #'Technical Day ONE: Engineering and IT - Tuesday, Sep 14, 9:00 am - 2:00 pm EDT'
 #'Technical Day TWO: Engineering and IT - Wednesday, Sep 15, 9:00 am - 2:00 pm EDT'
 #'Professional Day: Business and Arts and Sciences - Monday, Sep 13, 9:00 am - 2:00 pm EDT'
 
 '''
-TODO: 
-Add descriptor comment
-Weird syntax issue showed up once everything was moved from main into a function
+Contains Company class with relevant (and maybe some irrelevant) company info
+
+getSortedCompanies() takes in a full path to an Excel workbook filename as input, opens said workbook, stores relevant company
+information, filters out companies not attending the current session, and then creates a sorted list with the following order:
+    Premium Booths, Electricity Booths, Big Companies, then all others.
+
+NOTE: 
+    The constant SESSION_NAME (line 5) must be initialized with one of the session options (comments on lines 6-8)
+    For future use, options on lines 6-8 must be updated to new session names in Handshake (which writes to the registration Excel file)
+    The following column names in the Excel file must not change:
+        Employer
+        Sessions
+        Employer Industry
+        Requested Booth Options
+        Combined Majors
+        Electric
+        Big Company
+    If the column names do change, change the relevant column name to the updated version on approximate lines 56-62
 '''
 
 class Company:
