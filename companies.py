@@ -25,7 +25,9 @@ NOTE:
         Combined Majors
         Electric
         Big Company
-    If the column names do change, change the relevant column name to the updated version on approximate lines 73-79
+    If the column names do change, change the relevant column name to the updated version on approximate lines 70-76 in companies.py
+    Additionally, a column must be added directly after the last column in the excel file. This column must be titled exactly as "Big Company" (without quotes).
+    All "Big Companies" (as decided by Career Dev) should be marked with a "1" in the "Big Company" column
 '''
 
 class Company:
@@ -57,7 +59,7 @@ class Company:
                     break
                 else:
                     boothCount += 1
-            self.booth = currSessBooth 
+            self.booth = currSessBooth
         else: # only going to 1 session, so they only need 1 booth- don't need to change anything
             return
 
