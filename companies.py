@@ -1,3 +1,4 @@
+# from layout import SESSIONNAME
 import os
 
 import openpyxl as op
@@ -74,7 +75,7 @@ def getSortedCompanies(workbookName, sessionName):
         if currCell == 'Employer Industry': industryCol = col
         if currCell == 'Requested Booth Options': boothsCol = col
         if currCell == 'Combined Majors': majorsCol = col
-        if currCell == 'Electric': electricCol = col
+        if currCell == 'General Items - Access to Electric': electricCol = col
         if currCell == 'Big Company': bigCompCol = col
 
     currSessComps = []
@@ -130,15 +131,5 @@ def getSortedCompanies(workbookName, sessionName):
     return sortedComps
 
 
-if __name__ == "__main__":
-    comps = getSortedCompanies('C:\\Users\\Robbie\\Documents\\Documents\\Tribunal\\Fall 2021\\registered 8-11.xlsx', 
-                               sessionName)
-    for comp in comps:
-        if sessionName in comp.sessions:
-            print(True)
-        else:
-            print(False, '!!!!!!!!!!!!')
-        
-        print(comp.employer, '-- Booth:', comp.booth, 'Electric:', comp.needsElectric, 'Big Comp:', comp.bigComp, 'Industry:', comp.industry)
-        
-        # comp.printCompanyInfo()
+def getCompanies(filename, SESSIONNAME):
+    return getSortedCompanies(filename, SESSIONNAME)
