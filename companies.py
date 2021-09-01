@@ -1,3 +1,4 @@
+# from layout import SESSIONNAME
 import os
 
 import openpyxl as op
@@ -108,3 +109,6 @@ def getSortedCompanies(workbookName, sessionName):
             if comp not in sortedComps: sortedComps.append(comp)
 
     return sortedComps
+  def getCompanies(filename, SESSIONNAME):
+    return getSortedCompanies(filename, SESSIONNAME)
+  
