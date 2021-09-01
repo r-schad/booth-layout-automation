@@ -3,32 +3,12 @@ import os
 
 import openpyxl as op
 
-sessionName = 'Technical Day ONE: Engineering and IT - Tuesday, Sep 14, 9:00 am - 2:00 pm EDT' #CHANGE THIS LINE!
-#'Technical Day ONE: Engineering and IT - Tuesday, Sep 14, 9:00 am - 2:00 pm EDT'
-#'Technical Day TWO: Engineering and IT - Wednesday, Sep 15, 9:00 am - 2:00 pm EDT'
-#'Professional Day: Business and Arts and Sciences - Monday, Sep 13, 9:00 am - 2:00 pm EDT'
-
 '''
 Contains Company class with relevant (and maybe some irrelevant) company info
 
-getSortedCompanies() takes in a full path to an Excel workbook filename and the Session Name as input, opens the workbook, stores relevant company
+getSortedCompanies() takes in an Excel workbook filename and the Session Name as input, opens the workbook, stores relevant company
 information, filters out companies not attending the current session, and then creates a sorted list with the following order:
     Premium Booths, Electricity Booths, Big Companies, then all others (sorted by industry).
-
-NOTE: 
-    The constant sessionName (line 5) must be initialized with one of the session options (comments on lines 6-8)
-    For future use, options on lines 6-8 must be updated to new session names in Handshake (which writes to the registration Excel file)
-    The following column names in the Excel file must not change:
-        Employer
-        Sessions
-        Employer Industry
-        Requested Booth Options
-        Combined Majors
-        Electric
-        Big Company
-    If the column names do change, change the relevant column name to the updated version on approximate lines 70-76 in companies.py
-    Additionally, a column must be added directly after the last column in the excel file. This column must be titled exactly as "Big Company" (without quotes).
-    All "Big Companies" (as decided by Career Dev) should be marked with a "1" in the "Big Company" column
 '''
 
 class Company:
@@ -129,7 +109,6 @@ def getSortedCompanies(workbookName, sessionName):
             if comp not in sortedComps: sortedComps.append(comp)
 
     return sortedComps
-
-
-def getCompanies(filename, SESSIONNAME):
+  def getCompanies(filename, SESSIONNAME):
     return getSortedCompanies(filename, SESSIONNAME)
+  
