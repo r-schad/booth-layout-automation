@@ -2,32 +2,12 @@ import os
 
 import openpyxl as op
 
-sessionName = 'Technical Day ONE: Engineering and IT - Tuesday, Sep 14, 9:00 am - 2:00 pm EDT' #CHANGE THIS LINE!
-#'Technical Day ONE: Engineering and IT - Tuesday, Sep 14, 9:00 am - 2:00 pm EDT'
-#'Technical Day TWO: Engineering and IT - Wednesday, Sep 15, 9:00 am - 2:00 pm EDT'
-#'Professional Day: Business and Arts and Sciences - Monday, Sep 13, 9:00 am - 2:00 pm EDT'
-
 '''
 Contains Company class with relevant (and maybe some irrelevant) company info
 
-getSortedCompanies() takes in a full path to an Excel workbook filename and the Session Name as input, opens the workbook, stores relevant company
+getSortedCompanies() takes in an Excel workbook filename and the Session Name as input, opens the workbook, stores relevant company
 information, filters out companies not attending the current session, and then creates a sorted list with the following order:
     Premium Booths, Electricity Booths, Big Companies, then all others (sorted by industry).
-
-NOTE: 
-    The constant sessionName (line 5) must be initialized with one of the session options (comments on lines 6-8)
-    For future use, options on lines 6-8 must be updated to new session names in Handshake (which writes to the registration Excel file)
-    The following column names in the Excel file must not change:
-        Employer
-        Sessions
-        Employer Industry
-        Requested Booth Options
-        Combined Majors
-        Electric
-        Big Company
-    If the column names do change, change the relevant column name to the updated version on approximate lines 70-76 in companies.py
-    Additionally, a column must be added directly after the last column in the excel file. This column must be titled exactly as "Big Company" (without quotes).
-    All "Big Companies" (as decided by Career Dev) should be marked with a "1" in the "Big Company" column
 '''
 
 class Company:
@@ -74,7 +54,7 @@ def getSortedCompanies(workbookName, sessionName):
         if currCell == 'Employer Industry': industryCol = col
         if currCell == 'Requested Booth Options': boothsCol = col
         if currCell == 'Combined Majors': majorsCol = col
-        if currCell == 'Electric': electricCol = col
+        if currCell == 'General Items - Access to Electric': electricCol = col
         if currCell == 'Big Company': bigCompCol = col
 
     currSessComps = []
@@ -128,17 +108,3 @@ def getSortedCompanies(workbookName, sessionName):
             if comp not in sortedComps: sortedComps.append(comp)
 
     return sortedComps
-
-
-if __name__ == "__main__":
-    comps = getSortedCompanies('C:\\Users\\Robbie\\Documents\\Documents\\Tribunal\\Fall 2021\\registered 8-11.xlsx', 
-                               sessionName)
-    for comp in comps:
-        if sessionName in comp.sessions:
-            print(True)
-        else:
-            print(False, '!!!!!!!!!!!!')
-        
-        print(comp.employer, '-- Booth:', comp.booth, 'Electric:', comp.needsElectric, 'Big Comp:', comp.bigComp, 'Industry:', comp.industry)
-        
-        # comp.printCompanyInfo()
